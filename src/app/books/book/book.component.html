@@ -1,0 +1,11 @@
+<li class="flex border rounded-xl h-60">
+    
+    <img [src]="book.src" [alt]="book.name" width="100" class="m-auto rounded-sm"/>
+    <div class="m-auto">
+        <p><strong>{{book.name | titlecase }}</strong></p><br>
+        <p><strong>by {{book.author | titlecase}}</strong></p>
+        <p class="my-4">{{book.amt| currency:'INR'}}</p>
+        <button *ngIf="!isInCart" (click)="addtocart()" class="border rounded bg-purple-600 text-white p-1" ><strong>ADD TO CART</strong></button>
+        <button *ngIf="isInCart" (click)="removefromcart()" class="border rounded bg-purple-600 text-white p-1"><strong>REMOVE FROM CART</strong></button>
+    </div>
+</li>

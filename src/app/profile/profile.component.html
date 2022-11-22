@@ -1,0 +1,99 @@
+<!-- 
+<div>
+    <form style="width:fit-content; height: fit-content; text-align:center;" class=" p-4 rounded-lg border m-20 ">
+        <div class="text-center text-xl"><strong>Account Details</strong></div>
+        <div class="m-5  p-1">
+            <label for="name"><strong>Name:</strong> &nbsp;</label>
+            <input class="p-1 rounded border"  placeholder="{{data[0].name}}">
+            
+        </div>
+        <div class="m-5  p-1">
+            <label for="email"><strong>Email:</strong> &nbsp;</label>
+            <input class="p-1 rounded border"  placeholder="{{data[0].email}}">
+            <span class="myDIV">&nbsp; &#9745;</span>
+            <span class="hide">verified</span>
+        </div>
+
+        <div class="m-5 p-1">
+            <label for="phone"><strong>Mobile No. : &nbsp;</strong> &nbsp;</label>
+            <input class="p-1 rounded border"  placeholder="{{data[0].mobilenumber}}">
+        </div>
+
+        <div class="m-5 p-1">
+            <label for="address"><strong>Address: &nbsp; </strong> &nbsp;</label>
+            <textarea class=" rounded border">{{data[0].address}}</textarea>
+        </div>
+
+        <form class="p-4 rounded-lg border m-20">
+            <div class="text-center text-xl"><strong>Change Password:</strong></div>
+            <div class="m-5 p-1">
+                <label><strong>Password: &nbsp;</strong> &nbsp;</label>
+                <input class="p-1 rounded border"  placeholder="password">
+            </div>
+            <div class="m-5 p-1">
+                <label><strong>Confirm Password: &nbsp;</strong> &nbsp;</label>
+                <input class="p-1 rounded border"  placeholder="confirm password">
+            </div>
+        </form>
+        <button><strong class="border rounded bg-purple-600 text-white p-1">Save</strong></button>
+
+    </form>
+
+</div> -->
+
+<app-main></app-main>
+
+<mat-card align="center" class="p-4 rounded-lg border m-20">
+    <mat-card-title><strong>Account Details</strong></mat-card-title><br>
+    <mat-card-content>
+        <div class="m-5  p-1">
+            <label for="name"><strong>Name:</strong> &nbsp;</label>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <input matInput placeholder="Your Name" value="{{data[0].name}}">
+            </mat-form-field>
+
+            <!-- <input class="p-1 rounded border"  placeholder="{{data[0].name}}"> -->
+        </div>
+        <div class="m-5  p-1">
+            <label for="email"><strong>Email:</strong> &nbsp;</label>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <input matInput placeholder="Your Email Id" value="{{data[0].email}}">
+            </mat-form-field>
+            <span class="myDIV">&nbsp; &#9745; <span class="hide">verified</span></span>
+            <span class="hide">verified</span>
+        </div>
+
+        <div class="m-5 p-1">
+            <label for="phone"><strong>Mobile No. : &nbsp;</strong> &nbsp;</label>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <input matInput placeholder="Mobile Number" value="{{data[0].mobilenumber}}">
+            </mat-form-field>
+        </div>
+
+        <div class="m-5 p-1">
+            <label for="address"><strong>Address: &nbsp; </strong> &nbsp;</label>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <textarea matInput placeholder="Address">{{data[0].address}}</textarea>
+              </mat-form-field>
+        </div>
+    </mat-card-content>
+
+    <mat-card class="p-4 rounded-lg border m-20">
+        <mat-card-title>Change Password</mat-card-title><br>
+        <mat-card-content>
+                <div class="m-5 p-1">
+                    <label><strong>Password: &nbsp;</strong> &nbsp;</label>
+                    <input class="p-1 rounded border"  placeholder="password">
+                </div>
+                <div class="m-5 p-1">
+                    <label><strong>Confirm Password: &nbsp;</strong> &nbsp;</label>
+                    <input class="p-1 rounded border"  placeholder="confirm password">
+                </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card-actions >
+        <!-- <button mat-raised-button color="primary">Primary</button> -->
+        <button class="border rounded bg-purple-600 text-white p-1" mat-button>Save</button>
+    </mat-card-actions>
+</mat-card>
