@@ -29,6 +29,7 @@ export class BookComponent implements OnInit {
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
+    
   }
 
 }

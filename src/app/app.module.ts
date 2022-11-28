@@ -18,10 +18,16 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 //import { HttpClientModule } from '@angular/common/http';
 //import { MatFormFieldModule } from "@angular/material/form-field";
 import { ToastrModule } from 'ngx-toastr';
+import { AddBookComponent } from './add-book/add-book.component';
+import { TokenInterceptor } from './token.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 @NgModule({
-    declarations: [AppComponent, BooksComponent, BookComponent, CartComponent, MainComponent, ProfileComponent],
+    providers: [ 
+        { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+      ],
+    declarations: [AppComponent, BooksComponent, BookComponent, CartComponent, MainComponent, ProfileComponent, AddBookComponent],
     imports: [
         BrowserModule, 
         AuthModule, 

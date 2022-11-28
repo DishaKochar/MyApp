@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {FormControl,FormGroup,Validators} from "@angular/forms";
+import { HttpService } from "../http.service";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -9,23 +11,14 @@ import {FormControl,FormGroup,Validators} from "@angular/forms";
 })
 export class LoginComponent implements OnInit {
 
-  // form: LoginForm ={
-  //   name: '',
-  //   mobilenumber: '',
-  //   email: '',
-  //   password:'',
-  //   address:''
-  // };
-
   myGroup = new FormGroup({
     'name': new FormControl(''),
     'mobilenumber':new FormControl(''),
     'email':new FormControl('',[Validators.required]),
     'password': new FormControl('',[Validators.required]),
     'address':new FormControl(''),
-});
-// 'email':new FormControl('',[Validators.required,Validators.email]),
-// 'password': new FormControl('',[Validators.required,Validators.minLength(4)]),
+  });
+  
   get email()
   {
     return this.myGroup.get('email')
@@ -37,7 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
 
-  constructor(private router: Router){ }
+  constructor(private router: Router,private toastr: ToastrService, private user:HttpService){ }
 
   ngOnInit(): void {
     
@@ -48,8 +41,24 @@ export class LoginComponent implements OnInit {
       email: this.email!.value,
       password:this.password!.value
     }
-    localStorage.setItem('user1',JSON.stringify(obj))
-    this.router.navigateByUrl('books')
+    this.user.verifyLoginDetails(obj).subscribe((res:any)=>{
+      console.log("API RESPONSE for verifying login details",res);
+      if(res.status=='200'){
+        console.log('1 login res: ',res.status);
+        this.toastr.success("You have successfully logged in !");
+        localStorage.setItem('userEmail',JSON.stringify(obj.email))
+        localStorage.setItem('status',JSON.stringify(res.status))
+        localStorage.setItem('token',JSON.stringify(res.token))
+
+        this.router.navigateByUrl('books')
+      }
+      else{
+        console.log('2 login res: ',res.status);
+        this.toastr.error("Invalid email or password !! \nPlease enter valid details.")
+        localStorage.setItem('status',JSON.stringify(res.status))
+        this.router.navigateByUrl('')    
+      }
+     })
   }
 
   onClick(){

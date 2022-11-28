@@ -89,16 +89,25 @@ export class RegisterComponent implements OnInit {
       password:this.password!.value,
       confirmpassword: this.confirmpassword!.value,
       address:this.address!.value,
+      verification: false
     }
 
-    this.user.addRegDetails(obj).subscribe(res=>{
-      console.log("register response for post",res);
-    })
     
     if(obj.password==obj.confirmpassword){
+      console.log('obj data:',obj)
       localStorage.setItem('user1',JSON.stringify(obj))
-      this.toastr.success("You have successfully registered ! \n Login to get started!!")
-      this.router.navigateByUrl('')
+      //httpService call for post request
+      this.user.addRegDetails(obj).subscribe(res=>{
+        if(res.status == '404'){
+          console.log("register response for post",res);
+          this.toastr.error("This email id is a Registered Email Id !!")
+          this.router.navigateByUrl('/register')
+        }
+        else{
+          this.toastr.success("You have successfully registered ! \n Login to get started!!")
+          this.router.navigateByUrl('') 
+        }
+      })
     }
     else{
       this.toastr.error("Password and Confirm Password are different. ")

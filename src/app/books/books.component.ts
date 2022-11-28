@@ -1,6 +1,8 @@
 import { Component, OnInit ,Output, EventEmitter} from '@angular/core';
 import { Book } from '../types/Book';
-import { BooksService } from './books.service';
+//import { BooksService } from './books.service';
+import { HttpService } from "../auth/http.service";
+
 
 @Component({
   selector: 'app-books',
@@ -11,7 +13,7 @@ import { BooksService } from './books.service';
 export class BooksComponent implements OnInit {
 
   books: Book[]= [];
-  constructor(private booksService: BooksService) {}
+  constructor(private user:HttpService) {} //private booksService: BooksService,
 
 
   isShowing: boolean = true;
@@ -21,8 +23,12 @@ export class BooksComponent implements OnInit {
   // }
   
   ngOnInit() {
-    this.books = this.booksService.getBooks();
-
+    //this.books = this.booksService.getBooks();
+    let token = JSON.parse(localStorage.getItem('token') || '{}');
+    this.user.getBooks().subscribe((res:any)=>{
+      this.books = res
+      console.log(res)
+    })
   }
 
 

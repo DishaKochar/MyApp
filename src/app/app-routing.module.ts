@@ -6,11 +6,14 @@ import { LoginComponent } from "./auth/login/login.component";
 import { RegisterComponent } from "./auth/register/register.component";
 import { AuthguardGuard } from "./auth/authguard.guard";
 import { ProfileComponent } from "./profile/profile.component";
+import { AddBookComponent } from "./add-book/add-book.component";
+
 
 const routes: Routes= [
     {path:'books',component: BooksComponent,canActivate: [AuthguardGuard],},
+    {path:'book/add',component: AddBookComponent,canActivate: [AuthguardGuard],},
     {path:'',component: LoginComponent},
-    {path:'profile',component: ProfileComponent},
+    {path:'profile',component: ProfileComponent, canActivate: [AuthguardGuard],},
     {path:'register',component: RegisterComponent},
     {
         path: 'cart',
