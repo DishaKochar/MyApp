@@ -89,6 +89,7 @@ export class RegisterComponent implements OnInit {
       password:this.password!.value,
       confirmpassword: this.confirmpassword!.value,
       address:this.address!.value,
+      wallet: 5000,
       verification: false
     }
 
@@ -105,6 +106,12 @@ export class RegisterComponent implements OnInit {
         }
         else{
           this.toastr.success("You have successfully registered ! \n Login to get started!!")
+          // this.user.createCart(obj.email).subscribe(res=>{
+          //   console.log("Cart Created",res);
+          //   // if(res.status == '200'){
+          //   //   console.log("Cart Created",res);
+          //   // }
+          // })
           this.router.navigateByUrl('') 
         }
       })

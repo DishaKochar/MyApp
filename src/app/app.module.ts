@@ -21,13 +21,14 @@ import { ToastrModule } from 'ngx-toastr';
 import { AddBookComponent } from './add-book/add-book.component';
 import { TokenInterceptor } from './token.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { OrderComponent } from './order/order.component';
 
 
 @NgModule({
     providers: [ 
         { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
       ],
-    declarations: [AppComponent, BooksComponent, BookComponent, CartComponent, MainComponent, ProfileComponent, AddBookComponent],
+    declarations: [AppComponent, BooksComponent, BookComponent, CartComponent, MainComponent, ProfileComponent, AddBookComponent, OrderComponent],
     imports: [
         BrowserModule, 
         AuthModule, 

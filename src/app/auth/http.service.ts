@@ -39,8 +39,35 @@ export class HttpService {
     return this.http.get<any>(environment.apiBaseUrl+`/profile/${email}`);
 
   }
+
+  getCart(email: any){
+    return this.http.get<any>(environment.apiBaseUrl+`/cart/${email}`);
+
+  }
+
+  addToCart(BookDetails: any){
+    return this.http.post<any>(environment.apiBaseUrl+'/cart/add',BookDetails);
+
+  }
+
+  removeFromCart(CartDetails: any){
+    return this.http.post<any>(environment.apiBaseUrl+'/cart/remove',CartDetails);
+
+  }
+
+  placeOrder(OrderDetails: any){
+    return this.http.post<any>(environment.apiBaseUrl+'/order',OrderDetails);
+
+  }
+
+  getOrderDetails(email: any){
+    console.log("http-profile-email:",email)
+    return this.http.get<any>(environment.apiBaseUrl+`/order/${email}`);
+
+  }
+
+  // createCart(email: any){
+  //   return this.http.post<any>(environment.apiBaseUrl+'/add',email);
+
+  // }
 }
-// login(data):Observable<any>{
-//   console.log("I am Server");
-//   return this.http.post<any>(environment.apiBaseUrl+'/',Details);
-//}

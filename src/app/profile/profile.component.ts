@@ -37,14 +37,12 @@ export class ProfileComponent implements OnInit {
     //   address:'Durgapura'
     // } 
 
-
+  order: any =[]
   
   ngOnInit(): void {
     let email = JSON.parse(localStorage.getItem('userEmail') || '{}');
 
     this.user.getProfileDetails(email).subscribe((res:any)=>{
-      //this.profile = res
-      
       this.profile.setValue({
         name: res.data.name,
         mobilenumber: res.data.mobilenumber,
@@ -54,6 +52,13 @@ export class ProfileComponent implements OnInit {
       })
       console.log("profile data",res)
     })
+
+    this.user.getOrderDetails(email).subscribe((res: any)=>{
+      console.log("Order Details:-",res.data)
+      this.order = res.data[0].books
+      console.log(this.order)
+    })
+
   }
 
 }

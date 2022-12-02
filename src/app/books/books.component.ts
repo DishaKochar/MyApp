@@ -12,7 +12,7 @@ import { HttpService } from "../auth/http.service";
 
 export class BooksComponent implements OnInit {
 
-  books: Book[]= [];
+  books: any[]= [];
   constructor(private user:HttpService) {} //private booksService: BooksService,
 
 
@@ -24,7 +24,7 @@ export class BooksComponent implements OnInit {
   
   ngOnInit() {
     //this.books = this.booksService.getBooks();
-    let token = JSON.parse(localStorage.getItem('token') || '{}');
+    //let token = JSON.parse(localStorage.getItem('token') || '{}');
     this.user.getBooks().subscribe((res:any)=>{
       this.books = res
       console.log(res)

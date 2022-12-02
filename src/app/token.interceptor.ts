@@ -23,7 +23,7 @@ export class TokenInterceptor implements HttpInterceptor {
         Authorization: `Bearer ${userToken}`
       }
     });
-    console.log("16 interceptor",modifiedReq.headers,req.headers);
+    //console.log("16 interceptor",modifiedReq.headers,req.headers);
     return next.handle(modifiedReq);
   }
 }

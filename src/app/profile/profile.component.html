@@ -78,7 +78,7 @@
             </div>
         </mat-card-content>
 
-        <mat-card class="p-4 rounded-lg border m-20">
+        <!-- <mat-card class="p-4 rounded-lg border m-20">
             <mat-card-title>Change Password</mat-card-title><br>
             <mat-card-content>
                     <div class="m-5 p-1">
@@ -93,9 +93,30 @@
         </mat-card>
 
         <mat-card-actions >
-            <!-- <button mat-raised-button color="primary">Primary</button> -->
             <button class="border rounded bg-purple-600 text-white p-1" mat-button>Save</button>
-        </mat-card-actions>
-    </mat-card>
+        </mat-card-actions> -->
+   
+        <div style="padding: 10px;">
+
+            <div class="text-lg m-4"><strong> &nbsp; YOUR ORDERS &nbsp; &nbsp; &nbsp; &nbsp;</strong>
+            </div>
+                
+                <ul>
+                    <ng-container *ngFor="let orderItem of order; let i=index;">
+                        <li class="flex border rounded-xl h-60">
+                            <img [src]="orderItem.src" [alt]="orderItem.name" width="100" class="m-auto rounded-sm"/>
+                            <div class="m-auto">
+                                <p><strong>{{orderItem.name | titlecase}}</strong></p><br>
+                                <p><strong>by {{orderItem.author | titlecase}}</strong></p>
+                                <p class="my-4">{{orderItem.amount| currency:'INR'}}</p>
+                                <p>Quantity: {{orderItem.quantity}}</p>
+                            </div>
+                        </li>
+                    </ng-container>
+                
+                </ul> 
+        </div>
+
+</mat-card>
 
 </form>
